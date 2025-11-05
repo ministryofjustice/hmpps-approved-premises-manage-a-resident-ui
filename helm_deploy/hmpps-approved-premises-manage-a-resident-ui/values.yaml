@@ -46,10 +46,10 @@ generic-service:
       CLIENT_CREDS_CLIENT_SECRET: 'CLIENT_CREDS_CLIENT_SECRET'
     hmpps-approved-premises-manage-a-resident-ui-auth-code:
       AUTH_CODE_CLIENT_ID: 'AUTH_CODE_CLIENT_ID'
-      AUTH_CODE_CLIENT_SECRET: 'AUTH_CODE_CLIENT_SECRET'    
+      AUTH_CODE_CLIENT_SECRET: 'AUTH_CODE_CLIENT_SECRET'
     hmpps-approved-premises-manage-a-resident-ui-session-secret:
       SESSION_SECRET: 'SESSION_SECRET'
-    hmpps-approved-premises-manage-a-resident-ui-elasticache-redis:
+    elasticache-redis:
       REDIS_HOST: 'primary_endpoint_address'
       REDIS_AUTH_TOKEN: 'auth_token'
     hmpps-approved-premises-manage-a-resident-ui-application-insights:
