@@ -6,6 +6,7 @@ generic-service:
 
   ingress:
     host: approved-premises-manage-a-resident-ui-dev.hmpps.service.justice.gov.uk
+    tlsSecretName: hmpps-approved-premises-manage-a-resident-dev-cert
 
   env:
     INGRESS_URL: "https://approved-premises-manage-a-resident-ui-dev.hmpps.service.justice.gov.uk"
