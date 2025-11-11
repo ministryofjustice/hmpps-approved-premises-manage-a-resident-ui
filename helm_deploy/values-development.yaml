@@ -5,10 +5,11 @@ generic-service:
   replicaCount: 2
 
   ingress:
-    host: approved-premises-manage-a-resident-ui-dev.hmpps.service.justice.gov.uk
+    host: approved-premises-manage-a-resident-dev.hmpps.service.justice.gov.uk
+    tlsSecretName: hmpps-approved-premises-manage-a-resident-dev-cert
 
   env:
-    INGRESS_URL: "https://approved-premises-manage-a-resident-ui-dev.hmpps.service.justice.gov.uk"
+    INGRESS_URL: "https://approved-premises-manage-a-resident-dev.hmpps.service.justice.gov.uk"
     HMPPS_AUTH_URL: "https://sign-in-dev.hmpps.service.justice.gov.uk/auth"
     TOKEN_VERIFICATION_API_URL: "https://token-verification-api-dev.prison.service.justice.gov.uk"
     EXAMPLE_API_URL: 'https://template-kotlin-dev.hmpps.service.justice.gov.uk'
