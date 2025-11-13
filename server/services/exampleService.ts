@@ -1,9 +1,9 @@
-import ExampleApiClient from '../data/exampleApiClient'
+import ManageAResidentClient from '../data/manageAResidentClient'
 
 export default class ExampleService {
-  constructor(private readonly exampleApiClient: ExampleApiClient) {}
+  constructor(private readonly exampleApiClient: ManageAResidentClient) {}
 
-  getCurrentTime() {
-    return this.exampleApiClient.getCurrentTime()
+  getHelloWorld(token: string) {
+    return this.exampleApiClient.getHelloWorld(token)
   }
 }
