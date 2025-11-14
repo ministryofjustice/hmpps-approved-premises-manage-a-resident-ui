@@ -61,6 +61,7 @@
     "superagent": "^10.2.3"
   },
   "devDependencies": {
+    "@golevelup/ts-jest": "^0.7.0",
     "@jgoz/esbuild-plugin-typecheck": "^4.0.4",
     "@ministryofjustice/eslint-config-hmpps": "^1.0.0",
     "@ministryofjustice/hmpps-precommit-hooks": "^1.0.2",

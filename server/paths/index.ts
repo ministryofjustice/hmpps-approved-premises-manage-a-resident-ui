@@ -15,5 +15,5 @@ const paths: Record<string, any> = {
 
 export default paths
 
-// /resident/:residentId/placement
-// /resident/:residentId/placement/previous-ap
+// /residents/:residentId/placement
+// /residents/:residentId/placement/previous-ap

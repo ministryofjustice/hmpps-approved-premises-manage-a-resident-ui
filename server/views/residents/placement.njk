@@ -1,1 +1,38 @@
-<h2>Placement information</h2>
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "moj/components/side-navigation/macro.njk" import mojSideNavigation %}
+{% from "moj/components/sub-navigation/macro.njk" import mojSubNavigation %}
+{% from "components/profile-banner/macro.njk" import profileBanner %}
+
+{% extends "../partials/layout.njk" %}
+
+{% set pageTitle = applicationName + " - Placement Information" %}
+{% set mainClasses = "govuk-body govuk-!-padding-top-0" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back to residents list",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ profileBanner(resident) }}
+
+  {{ mojSubNavigation({
+    items: subNavArray
+  }) }}
+
+  <h2 class="govuk-heading-l">Placement information</h2>
+
+  <div class="govuk-grid-column-one-quarter">
+    {{ mojSideNavigation({
+      items: sideNavArray
+    }) }}
+  </div>
+
+  <div class="govuk-grid-column-three-quarters">
+    <h2 class="govuk-heading-m">Placement information</h2>
+  </div>
+
+{% endblock %}

@@ -5,9 +5,8 @@
  */
 import { AuthenticationClient, InMemoryTokenStore, RedisTokenStore } from '@ministryofjustice/hmpps-auth-clients'
 import { initialiseAppInsights, buildAppInsightsClient } from '../utils/azureAppInsights'
-import applicationInfoSupplier from '../applicationInfo'
+import { applicationInfo } from '../applicationInfo'
 
-const applicationInfo = applicationInfoSupplier()
 initialiseAppInsights()
 buildAppInsightsClient(applicationInfo)
 
@@ -25,7 +24,6 @@ export const dataAccess = () => {
   )
 
   return {
-    applicationInfo,
     hmppsAuthClient,
     manageAResidentClient: new ManageAResidentClient(hmppsAuthClient),
     hmppsAuditClient: new HmppsAuditClient(config.sqs.audit),
