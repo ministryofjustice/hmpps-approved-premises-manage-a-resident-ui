@@ -16,6 +16,8 @@ import setUpWebRequestParsing from './middleware/setupRequestParsing'
 import setUpWebSecurity from './middleware/setUpWebSecurity'
 import setUpWebSession from './middleware/setUpWebSession'
 
+import { applicationInfo } from './applicationInfo'
+
 import routes from './routes'
 import type { Services } from './services'
 
@@ -27,7 +29,7 @@ export default function createApp(services: Services): express.Application {
   app.set('port', process.env.PORT || 3000)
 
   app.use(appInsightsMiddleware())
-  app.use(setUpHealthChecks(services.applicationInfo))
+  app.use(setUpHealthChecks(applicationInfo))
   app.use(setUpWebSecurity())
   app.use(setUpWebSession())
   app.use(setUpWebRequestParsing())
