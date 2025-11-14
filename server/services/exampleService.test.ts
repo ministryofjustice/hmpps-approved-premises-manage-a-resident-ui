@@ -1,24 +1,25 @@
-import ExampleApiClient from '../data/exampleApiClient'
+import ManageAResidentClient from '../data/manageAResidentClient'
 import ExampleService from './exampleService'
 
-jest.mock('../data/exampleApiClient')
+jest.mock('../data/manageAResidentClient')
 
 describe('ExampleService', () => {
-  const exampleApiClient = new ExampleApiClient(null) as jest.Mocked<ExampleApiClient>
+  const manageAResidentClient = new ManageAResidentClient(null) as jest.Mocked<ManageAResidentClient>
   let exampleService: ExampleService
 
   beforeEach(() => {
-    exampleService = new ExampleService(exampleApiClient)
+    exampleService = new ExampleService(manageAResidentClient)
   })
 
   it('should call getCurrentTime on the api client and return its result', async () => {
-    const expectedTime = '2025-01-01T12:00:00Z'
+    const expectedResponse = {
+      message: 'Hello world',
+    }
+    manageAResidentClient.getHelloWorld.mockResolvedValue(expectedResponse)
 
-    exampleApiClient.getCurrentTime.mockResolvedValue(expectedTime)
+    const result = await exampleService.getHelloWorld('some token')
 
-    const result = await exampleService.getCurrentTime()
-
-    expect(exampleApiClient.getCurrentTime).toHaveBeenCalledTimes(1)
-    expect(result).toEqual(expectedTime)
+    expect(manageAResidentClient.getHelloWorld).toHaveBeenCalledTimes(1)
+    expect(result).toEqual(expectedResponse)
   })
 })
