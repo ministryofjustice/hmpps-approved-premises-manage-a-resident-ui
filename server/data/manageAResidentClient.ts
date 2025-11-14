@@ -1,12 +1,17 @@
-import { RestClient } from '@ministryofjustice/hmpps-rest-client'
-import { AuthenticationClient } from '@ministryofjustice/hmpps-auth-clients'
-import { Resident } from '../@types/placementTypes'
+import { RestClient, asUser } from '@ministryofjustice/hmpps-rest-client'
+import type { AuthenticationClient } from '@ministryofjustice/hmpps-auth-clients'
 import config from '../config'
 import logger from '../../logger'
+import { HelloWorldData } from '../interfaces/helloWorldData'
+import { Resident } from '../@types/placementTypes'
 
-export default class ResidentClient extends RestClient {
-  constructor(authClient: AuthenticationClient) {
-    super('Resident', config.apis.exampleApi, logger, authClient)
+export default class ManageAResidentClient extends RestClient {
+  constructor(authenticationClient: AuthenticationClient) {
+    super('Single Accommodation Service (SAS) API', config.apis.manageAResidentApi, logger, authenticationClient)
+  }
+
+  getHelloWorld(token: string): Promise<HelloWorldData> {
+    return this.get({ path: '/hello-world' }, asUser(token))
   }
 
   getResident(): Resident {

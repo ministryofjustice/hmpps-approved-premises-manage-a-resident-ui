@@ -1,14 +1,10 @@
-import PlacementClient from '../data/placementClient'
-import ResidentClient from '../data/residentClient'
+import { ManageAResidentClient } from '../data'
 import { Resident } from '../@types/placementTypes'
 
 export default class PlacementService {
-  constructor(
-    private readonly placementClient: PlacementClient,
-    private readonly residentClient: ResidentClient,
-  ) {}
+  constructor(private readonly manageAResidentClient: ManageAResidentClient) {}
 
   getResident(): Resident {
-    return this.residentClient.getResident()
+    return this.manageAResidentClient.getResident()
   }
 }

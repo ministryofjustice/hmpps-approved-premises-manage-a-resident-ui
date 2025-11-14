@@ -4,13 +4,13 @@ import ExampleService from './exampleService'
 import PlacementService from './placementService'
 
 export const services = () => {
-  const { applicationInfo, placementClient, residentClient, hmppsAuditClient, exampleApiClient } = dataAccess()
+  const { applicationInfo, hmppsAuditClient, manageAResidentClient } = dataAccess()
 
   return {
     applicationInfo,
     auditService: new AuditService(hmppsAuditClient),
-    exampleService: new ExampleService(exampleApiClient),
-    placementService: new PlacementService(placementClient, residentClient),
+    exampleService: new ExampleService(manageAResidentClient),
+    placementService: new PlacementService(manageAResidentClient),
   }
 }
 
