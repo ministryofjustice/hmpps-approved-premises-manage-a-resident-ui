@@ -1,0 +1,59 @@
+.profile-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: govuk-spacing(4);
+  background-color: govuk-colour("light-grey");
+  padding: govuk-spacing(3);
+}
+
+.one-eighth {
+  grid-column: span 1;
+}
+
+.six-eighths {
+  grid-column: span 6;
+}
+
+.residents-profile-pic {
+  width: 130px;
+  height: auto;
+  padding: 0 0 0 govuk-spacing(2);
+  margin-top: govuk-spacing(1);
+}
+
+.residents-badge-container {
+  display: flex;
+  gap: 8px;
+  padding-top: govuk-spacing(2);
+  flex-wrap: wrap;
+}
+
+.residents-definition-list {
+  margin-bottom: govuk-spacing(1);
+  margin-top: 0;
+  margin-right: govuk-spacing(2);
+  padding-right: govuk-spacing(2);
+  display: inline-block;
+
+  font-size: 1rem;
+  line-height: 1.1428571429; // taken from the prototype, not sure where this value came from
+
+  border-right: 1px solid govuk-colour("mid-grey");
+  &:last-child{
+    border-right: 0;
+  }
+
+  dt {
+    clear: both;
+    float: left;
+    font-weight: normal;
+    color: govuk-colour("dark-grey");
+    margin-right: 0.3em;
+  }
+
+  dd {
+    float: left;
+    margin: 0;
+  }
+}

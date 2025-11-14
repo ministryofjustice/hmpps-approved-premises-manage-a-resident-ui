@@ -3,20 +3,23 @@ import { Router } from 'express'
 import type { Services } from '../services'
 import { Page } from '../services/auditService'
 import { actions } from './utils'
-import PlacementController from '../controllers/placementController'
 import paths from '../paths'
+import controllers from '../controllers'
 
-export default function routes({ auditService, exampleService }: Services): Router {
+export default function routes(services: Services): Router {
   const router = Router()
 
   const { get } = actions(router)
 
-  get(paths.placements.index.pattern, PlacementController.index())
+  const { placementController } = controllers()
+
+  get(paths.placements.index.pattern, placementController.index())
 
   router.get('/', async (req, res, next) => {
-    await auditService.logPageView(Page.EXAMPLE_PAGE, { who: res.locals.user.username, correlationId: req.id })
+    await services.auditService.logPageView(Page.EXAMPLE_PAGE, { who: res.locals.user.username, correlationId: req.id })
 
-    const currentTime = await exampleService.getCurrentTime()
+    const currentTime = await services.exampleService.getCurrentTime()
+
     return res.render('pages/index', { currentTime })
   })
 
