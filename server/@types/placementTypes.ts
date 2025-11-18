@@ -17,4 +17,12 @@ type Resident = {
   attributes: Array<Attribute>
 }
 
-export type { BadgeColour, Resident }
+type PreviousApStay = {
+  name: string
+  arrivalDate: string
+  departureDate: string
+  departureReason: string
+  departureReasonNotes?: string
+}
+
+export type { BadgeColour, Resident, PreviousApStay }

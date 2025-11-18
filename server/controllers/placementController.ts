@@ -20,6 +20,31 @@ export default class PlacementController {
         resident: headerResident,
         subNavArray: subNavArray(residentId, 'Placement'),
         sideNavArray: placementSideNavArray(residentId, 'Placement information'),
+        sectionHeading: 'Placement information',
+      })
+    }
+  }
+
+  previousAp(): RequestHandler {
+    return async (req: Request, res: Response) => {
+      const { residentId } = req.params
+      const token = res.locals?.user?.token
+
+      const resident = this.placementService.getResident()
+
+      const headerResident = {
+        ...resident,
+        badges: resident.badges.map(badge => getBadge(badge.text, badge.colour)),
+      }
+
+      const previousApStays = token ? await this.placementService.getPreviousApStays(token, residentId) : []
+
+      res.render('residents/placement', {
+        resident: headerResident,
+        subNavArray: subNavArray(residentId, 'Placement'),
+        sideNavArray: placementSideNavArray(residentId, 'Previous AP stays'),
+        sectionHeading: 'Previous AP stays',
+        previousApStays,
       })
     }
   }

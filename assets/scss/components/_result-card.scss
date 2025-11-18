@@ -1,0 +1,29 @@
+.result-card {
+  @include govuk-responsive-margin(6, "bottom");
+  border: 1px solid govuk-colour('mid-grey');
+
+  &:last-child {
+    @include govuk-responsive-margin(8, "bottom");
+  }
+
+  &__header {
+    @include govuk-responsive-padding(4, "all");
+    border-bottom: 1px solid govuk-colour('mid-grey');
+    background-color: govuk-colour("light-grey");
+  }
+
+  &__body {
+    @include govuk-responsive-padding(4, "top");
+    @include govuk-responsive-padding(4, "left");
+    @include govuk-responsive-padding(4, "right");
+  }
+
+  .govuk-summary-list {
+    @include govuk-responsive-margin(2, "bottom");
+  }
+
+  .govuk-summary-list__row:last-child {
+    border-bottom: 0;
+    @include govuk-responsive-padding(4, "bottom");
+  }
+}

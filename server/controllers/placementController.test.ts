@@ -87,8 +87,42 @@ describe('PlacementController', () => {
         expect.objectContaining({
           sideNavArray: [
             { text: 'Placement information', href: `/residents/${residentId}/placement`, active: true },
-            { text: 'Previous AP stays', href: '#', active: false },
+            { text: 'Previous AP stays', href: `/residents/${residentId}/placement/previous-ap`, active: false },
           ],
+        }),
+      )
+    })
+  })
+  describe('previousAp', () => {
+    const token = 'test-user-token'
+    const previousApStays = [
+      {
+        name: 'Elmswood House',
+        arrivalDate: '2023-10-10',
+        departureDate: '2024-03-20',
+        departureReason: 'Breach or recall - Licence or bail conditions',
+        departureReasonNotes: 'Resident recalled following breach of licence conditions',
+      },
+    ]
+
+    beforeEach(() => {
+      response.locals = {
+        user: { token },
+      } as never
+
+      placementService.getPreviousApStays.mockResolvedValue(previousApStays)
+    })
+
+    it('should fetch and render previous AP stays', async () => {
+      const previousApRequestHandler = placementController.previousAp()
+
+      await previousApRequestHandler(request, response, next)
+
+      expect(placementService.getPreviousApStays).toHaveBeenCalledWith(token, residentId)
+      expect(response.render).toHaveBeenCalledWith(
+        'residents/placement',
+        expect.objectContaining({
+          previousApStays,
         }),
       )
     })

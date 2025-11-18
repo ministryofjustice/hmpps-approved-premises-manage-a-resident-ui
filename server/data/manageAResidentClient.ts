@@ -3,7 +3,7 @@ import type { AuthenticationClient } from '@ministryofjustice/hmpps-auth-clients
 import config from '../config'
 import logger from '../../logger'
 import { HelloWorldData } from '../interfaces/helloWorldData'
-import { Resident } from '../@types/placementTypes'
+import { PreviousApStay, Resident } from '../@types/placementTypes'
 
 export default class ManageAResidentClient extends RestClient {
   constructor(authenticationClient: AuthenticationClient) {
@@ -36,5 +36,21 @@ export default class ManageAResidentClient extends RestClient {
         { title: 'Length of stay', description: '12 weeks' },
       ],
     }
+  }
+
+  // TODO: Uncomment the bellow to use the real endpoint once it is ready
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getPreviousApStays(personId: string, token: string): Promise<Array<PreviousApStay>> {
+    // const path = `/person/${personId}/profile/cas1/placements`
+    // return this.get({ path }, asUser(token))
+    return Promise.resolve([
+      {
+        name: 'Elmswood House',
+        arrivalDate: '2023-10-10',
+        departureDate: '2024-03-20',
+        departureReason: 'Breach or recall - Licence or bail conditions',
+        departureReasonNotes: 'Resident recalled following breach of licence conditions',
+      },
+    ])
   }
 }

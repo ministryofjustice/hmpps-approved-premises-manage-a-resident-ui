@@ -19,7 +19,7 @@ function subNavArray(residentId: string, activeTab: string): Array<NavigationEnt
 function placementSideNavArray(residentId: string, activeTab: string): Array<NavigationEntry> {
   return [
     navEntry('Placement information', paths.placements.index({ residentId }), activeTab),
-    navEntry('Previous AP stays', '#', activeTab),
+    navEntry('Previous AP stays', paths.placements.previousAp({ residentId }), activeTab),
   ]
 }
 

@@ -33,4 +33,24 @@ describe('ManageAResidentClient', () => {
       expect(response).toEqual({ message: 'Hello World!' })
     })
   })
+
+  describe('getPreviousApStays', () => {
+    it('should return the previous AP stays for a persons', async () => {
+      const token = 'test-user-tokenn'
+      const personId = '111111'
+      const expectedResponse = [
+        {
+          name: 'Elmswood House',
+          arrivalDate: '2023-10-10',
+          departureDate: '2024-03-20',
+          departureReason: 'Breach or recall - Licence or bail conditions',
+          departureReasonNotes: 'Resident recalled following breach of licence conditions',
+        },
+      ]
+
+      const response = await manageAResidentClient.getPreviousApStays(personId, token)
+
+      expect(response).toEqual(expectedResponse)
+    })
+  })
 })

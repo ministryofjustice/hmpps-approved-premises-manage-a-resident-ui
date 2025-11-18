@@ -14,6 +14,7 @@ export default function routes(services: Services): Router {
   const { placementController } = controllers()
 
   get(paths.placements.index.pattern, placementController.index())
+  get(paths.placements.previousAp.pattern, placementController.previousAp())
 
   router.get('/', async (req, res, next) => {
     await services.auditService.logPageView(Page.EXAMPLE_PAGE, { who: res.locals.user.username, correlationId: req.id })
