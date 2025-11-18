@@ -48,7 +48,12 @@ describe('ManageAResidentClient', () => {
         },
       ]
 
-      const response = await manageAResidentClient.getPreviousApStays(personId, token)
+      nock(config.apis.manageAResidentApi.url)
+        .get(`/person/${personId}/profile/cas1/placements`)
+        .matchHeader('authorization', `Bearer ${token}`)
+        .reply(200, expectedResponse)
+
+      const response = await manageAResidentClient.getPreviousApStays(token, personId)
 
       expect(response).toEqual(expectedResponse)
     })
