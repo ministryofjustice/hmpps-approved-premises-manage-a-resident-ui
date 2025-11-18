@@ -9,6 +9,6 @@ export default class PlacementService {
   }
 
   getPreviousApStays(token: string, personId: string): Promise<Array<PreviousApStay>> {
-    return this.manageAResidentClient.getPreviousApStays(personId, token)
+    return this.manageAResidentClient.getPreviousApStays(token, personId)
   }
 }
