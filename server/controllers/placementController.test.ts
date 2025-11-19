@@ -3,6 +3,7 @@ import { createMock } from '@golevelup/ts-jest'
 import PlacementService from '../services/placementService'
 import PlacementController from './placementController'
 import { Resident } from '../@types/placementTypes'
+import previousApStaySummaryListRows from '../utils/previousApStaysUtils'
 
 describe('PlacementController', () => {
   let request: Request
@@ -113,7 +114,7 @@ describe('PlacementController', () => {
       placementService.getPreviousApStays.mockResolvedValue(previousApStays)
     })
 
-    it('should fetch and render previous AP stays', async () => {
+    it('should fetch and render previous AP stays with summary list rows', async () => {
       const previousApRequestHandler = placementController.previousAp()
 
       await previousApRequestHandler(request, response, next)
@@ -122,7 +123,12 @@ describe('PlacementController', () => {
       expect(response.render).toHaveBeenCalledWith(
         'residents/placement',
         expect.objectContaining({
-          previousApStays,
+          previousApStays: [
+            {
+              ...previousApStays[0],
+              summaryListRows: previousApStaySummaryListRows(previousApStays[0]),
+            },
+          ],
         }),
       )
     })

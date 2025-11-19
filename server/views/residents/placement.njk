@@ -47,24 +47,7 @@
 
           <div class="result-card__body">
               {{ govukSummaryList({
-                rows: [
-                  {
-                    key: { text: "Arrival date" },
-                    value: { text: stay.arrivalDate }
-                  },
-                  {
-                    key: { text: "Departure date" },
-                    value: { text: stay.departureDate }
-                  },
-                  {
-                    key: { text: "Departure reason" },
-                    value: { text: stay.departureReason }
-                  },
-                  {
-                    key: { text: "Departure reason notes" },
-                    value: { text: stay.departureReasonNotes }
-                  }
-                ]
+                rows: stay.summaryListRows
               }) }}
           </div>
         </article>

@@ -25,4 +25,10 @@ type PreviousApStay = {
   departureReasonNotes?: string
 }
 
+export type SummaryListRow = {
+  key: { text: string }
+  value: { text: string }
+}
+
+export type SummaryListRows = Array<SummaryListRow>
 export type { BadgeColour, Resident, PreviousApStay }
