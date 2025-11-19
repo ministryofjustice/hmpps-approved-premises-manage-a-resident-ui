@@ -3,7 +3,7 @@ import type { AuthenticationClient } from '@ministryofjustice/hmpps-auth-clients
 import config from '../config'
 import logger from '../../logger'
 import { HelloWorldData } from '../interfaces/helloWorldData'
-import { Resident } from '../@types/placementTypes'
+import { PreviousApStay, Resident } from '../@types/placementTypes'
 
 export default class ManageAResidentClient extends RestClient {
   constructor(authenticationClient: AuthenticationClient) {
@@ -36,5 +36,9 @@ export default class ManageAResidentClient extends RestClient {
         { title: 'Length of stay', description: '12 weeks' },
       ],
     }
+  }
+
+  getPreviousApStays(token: string, crn: string): Promise<Array<PreviousApStay>> {
+    return this.get({ path: `/person/${crn}/profile/cas1/placements` }, asUser(token))
   }
 }

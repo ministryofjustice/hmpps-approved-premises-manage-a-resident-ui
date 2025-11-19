@@ -35,7 +35,7 @@ describe('ResidentUtils', () => {
     it('should return the placement side nav array with the Previous AP stays tab active', () => {
       expect(placementSideNavArray(residentId, 'Previous AP stays')).toEqual([
         { text: 'Placement information', href: `/residents/${residentId}/placement`, active: false },
-        { text: 'Previous AP stays', href: '#', active: true },
+        { text: 'Previous AP stays', href: `/residents/${residentId}/placement/previous-ap`, active: true },
       ])
     })
   })

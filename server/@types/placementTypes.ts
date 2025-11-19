@@ -17,4 +17,18 @@ type Resident = {
   attributes: Array<Attribute>
 }
 
-export type { BadgeColour, Resident }
+type PreviousApStay = {
+  name: string
+  arrivalDate: string
+  departureDate: string
+  departureReason: string
+  departureReasonNotes?: string
+}
+
+export type SummaryListRow = {
+  key: { text: string }
+  value: { text: string }
+}
+
+export type SummaryListRows = Array<SummaryListRow>
+export type { BadgeColour, Resident, PreviousApStay }
